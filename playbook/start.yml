@@ -1,0 +1,8 @@
+---
+- debug: msg='STARTED'
+
+- name: start hekad
+  service: name=hekad state=started
+
+- name: open port
+  command: open-port {{port}}

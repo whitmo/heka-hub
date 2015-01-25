@@ -1,0 +1,23 @@
+---
+- name: Fetch current hekad deb
+  get_url: url={{deb_url}} dest={{current_heka_deb}}
+
+- stat: path={{current_heka_deb}}
+  register: current_deb_st
+
+- name: Fail if md5 does not match
+  fail: "msg='Bad md5 for {{deb_url}}: {{current_deb_st.stat.md5}}'"
+  when: current_deb_st.stat.md5 != deb_md5
+
+- name: install heka package
+  command: dpkg -i {{current_heka_deb}}
+
+- name: set up basic config
+  template: src=files/default.toml dest=/etc/heka.d/__default.toml
+
+- name: add rstout
+  copy: src=files/rstout.toml dest=/etc/heka.d/rstout.toml
+  when: rstout
+
+- name: add upstart job
+  copy: src=files/upstart.conf dest=/etc/init/hekad.conf

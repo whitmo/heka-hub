@@ -1,0 +1,9 @@
+---
+- name: ensure src dir
+  file: path=/opt/hekad-src state=directory
+
+- name: ensure etc/heka.d
+  file: path=/etc/heka.d state=directory
+
+- name: ensure seekjournals dir
+  file: path=/var/run/hekad/seekjournals state=directory

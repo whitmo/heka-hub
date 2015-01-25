@@ -1,0 +1,7 @@
+---
+- debug: msg='STOP'
+
+- service: name=hekad state=stopped
+
+- name: close port
+  command: close-port {{port}}

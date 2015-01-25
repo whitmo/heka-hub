@@ -1,0 +1,18 @@
+---
+port:
+  type: int
+  default: 5565
+  description: "Primary tcp listening port for hekad"
+whisperout:
+  type: bool
+  description: "Output statmetrics to whisper files"
+enable_ui:
+  type: boolean
+  description: "Enable dashboard"
+extra_config:
+  type: string
+  description: "A whitespace delimited list of urls to tarballs or a git repositories with additional toml config or sandbox code to run through templating and add to /etc/heka.d and /usr/share/heka/sandbox"
+rstout:
+  type: boolean
+  default: false
+  description: "Print all messages to stdout formatted w/ RestructuredText for debugging"

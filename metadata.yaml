@@ -1,0 +1,37 @@
+---
+name: heka-hub
+summary: "Standalone heka daemon for routing, aggregation, storage, etc"
+description: "Standalone heka daemon for routing, aggregation, storage, etc"
+subordinate: false
+provides:
+  heka_in:
+    interface: heka
+  metrics_in:
+    interface: udp
+  metrics_in:
+    interface: tcp
+  whisper_out:
+    interface: fs
+    scope: container
+requires:
+  heka_out:
+    interface: heka
+    optional: true
+  payload_out:
+    interface: elasticsearch
+    optional: true
+  logstash_out:
+    interface: elasticsearch
+    optional: true
+  json_out:
+    interface: elasticsearch
+    optional: true
+  schema_out:
+    interface: influxdb-http
+    optional: true
+  stats_out:
+    interface: influxdb-http
+    optional: true
+  carbon_out:
+    interface: tcp
+    optional: true

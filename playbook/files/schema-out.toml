@@ -1,0 +1,15 @@
+[influxdb]
+type = "SandboxEncoder"
+filename = "lua_encoders/influxdb.lua"
+    [influxdb.config]
+    series = "heka.%{Logger}"
+    skip_fields = "Pid EnvVersion"
+
+
+[InfluxOutput]
+message_matcher = "Type == 'influxdb'"
+encoder = "influxdb"
+type = "HttpOutput"
+address = "http://{{ hostname }}:{{ port }}/db/{{ dbname }}/series"
+username = "{{ influx_username }}"
+password = "{{ influx_password }}"

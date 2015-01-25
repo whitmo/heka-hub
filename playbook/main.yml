@@ -1,0 +1,49 @@
+---
+- hosts: all
+  vars:
+    etcd: /etc/hekad
+    srcd: /opt/hekad-src
+    deb_md5: 57f3c9420cdfabf63c47e303ba7ef714
+    deb_url: https://github.com/mozilla-services/heka/releases/download/v0.8.3/heka_0.8.3_amd64.deb
+  handlers:
+    - name: restart heka
+      service: name=hekad state=restarted
+  tasks:
+    - set_fact:
+        current_heka_deb: "{{srcd}}/heka-{{deb_md5}}.deb"
+      tags:
+        - install
+        - upgrade-charm
+        - config-changed
+
+    - debug: msg="relationship"
+      tags:
+        - heka_in-relation-joined
+        - heka_out-relation-joined
+        - elasticsearch_out-relation-joined
+        - influxdb_out-relation-joined
+
+    - include: schema_out-relation.yml
+      tags:
+        - schema_out-relation-changed
+      notify: restart heka
+
+    - include: install-upgrade.yml
+      tags:
+        - install
+        - upgrade-charm
+
+    - include: config-changed.yml
+      tags:
+        - config-changed
+      notify: restart heka
+
+    - name: start
+      include: start.yml
+      tags:
+        - start
+
+    - name: stop
+      include: stop.yml
+      tags:
+        - stop

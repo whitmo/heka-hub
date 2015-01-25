@@ -1,0 +1,8 @@
+---
+- debug: msg="Influxdb schema relation changed"
+
+- name: get port
+  command: relation-get http-port hostname
+
+- name: render influx schema config
+  template: src=files/schema-out.toml dest=/etc/heka.d/__schema-out.toml

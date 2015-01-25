@@ -1,0 +1,9 @@
+[hekad]
+maxprocs=3
+
+[ProtobufDecoder]
+
+[TcpInput]
+address = ":{{ port }}"
+parser_type = "message.proto"
+decoder = "ProtobufDecoder"
