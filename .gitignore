@@ -2,3 +2,4 @@
 *\#*
 /.juju-persistent-config
 /.venv/
+*.pyc

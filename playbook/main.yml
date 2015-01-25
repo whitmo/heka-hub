@@ -23,6 +23,11 @@
         - elasticsearch_out-relation-joined
         - influxdb_out-relation-joined
 
+    - include: heka_in-relation.yml
+      tags:
+        - heka_in-relation-changed
+      notify: restart heka
+
     - include: schema_out-relation.yml
       tags:
         - schema_out-relation-changed
