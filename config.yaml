@@ -1,18 +1,27 @@
 ---
-port:
-  type: int
-  default: 5565
-  description: "Primary tcp listening port for hekad"
-whisperout:
-  type: bool
-  description: "Output statmetrics to whisper files"
-enable_ui:
-  type: boolean
-  description: "Enable dashboard"
-extra_config:
-  type: string
-  description: "A whitespace delimited list of urls to tarballs or a git repositories with additional toml config or sandbox code to run through templating and add to /etc/heka.d and /usr/share/heka/sandbox"
-rstout:
-  type: boolean
-  default: false
-  description: "Print all messages to stdout formatted w/ RestructuredText for debugging"
+options:
+  deb_url:
+    type: string
+    default: "https://github.com/mozilla-services/heka/releases/download/v0.8.2/heka_0.8.2_amd64.deb"
+    description: "Url to a debian package for heka"
+  deb_md5:
+    type: string
+    default: dbd0b6151a7ce912a97440733b9a98b9
+    description: "MD5 for result of 'deb_url'"
+  port:
+    type: int
+    default: 5565
+    description: "Primary tcp listening port for hekad"
+  whisperout:
+    type: boolean
+    description: "Output statmetrics to whisper files"
+  enable_ui:
+    type: boolean
+    description: "Enable dashboard"
+  extra_config:
+    type: string
+    description: "A whitespace delimited list of urls to tarballs or a git repositories with additional toml config or sandbox code to run through templating and add to /etc/heka.d and /usr/share/heka/sandbox"
+  rstout:
+    type: boolean
+    default: false
+    description: "Print all messages to stdout formatted w/ RestructuredText for debugging"
