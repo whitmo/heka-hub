@@ -11,13 +11,17 @@
 
 - name: install heka package
   command: dpkg -i {{current_heka_deb}}
+  notify: restart heka
 
 - name: set up basic config
   template: src=files/default.toml dest=/etc/heka.d/__default.toml
+  notify: restart heka
 
 - name: add rstout
   copy: src=files/rstout.toml dest=/etc/heka.d/rstout.toml
   when: rstout
+  notify: restart heka
 
 - name: add upstart job
   copy: src=files/upstart.conf dest=/etc/init/hekad.conf
+  notify: restart heka

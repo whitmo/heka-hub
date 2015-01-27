@@ -43,7 +43,6 @@
     - include: config-changed.yml
       tags:
         - config-changed
-      notify: restart heka
 
     - name: start
       include: start.yml
