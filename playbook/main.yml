@@ -23,15 +23,17 @@
         - elasticsearch_out-relation-joined
         - influxdb_out-relation-joined
 
+    - include: whisper_out-relation.yml
+      tags:
+        - whisper_out-relation-changed
+
     - include: heka_in-relation.yml
       tags:
         - heka_in-relation-changed
-      notify: restart heka
 
     - include: schema_out-relation.yml
       tags:
         - schema_out-relation-changed
-      notify: restart heka
 
     - include: install-upgrade.yml
       tags:

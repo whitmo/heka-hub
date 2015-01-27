@@ -18,6 +18,7 @@ hook_names = [
     'schema_out-relation-changed',
     'stats_out-relation-joined',
     'stats_out-relation-changed',
+    'whisper_out-relation-changed'
 ]
 
 hooks = AnsibleHooks(playbook_path='playbook/main.yml',

@@ -1,0 +1,7 @@
+---
+- debug: msg="Whisperfile relation changed"
+
+- name: render whisper config
+  template: src=files/whisper-out.toml dest=/etc/heka.d/__whisper-out.toml
+  notify:
+    - restart heka

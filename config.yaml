@@ -12,9 +12,20 @@ options:
     type: int
     default: 5565
     description: "Primary tcp listening port for hekad"
-  whisperout:
-    type: boolean
-    description: "Output statmetrics to whisper files"
+  whisper_aggegration_method:
+    type: int
+    default: 1
+    description: |
+      Default aggregation method to use for each whisper output
+      file. Supports the following values:
+
+        (0) Unknown aggregation method.
+        (1) Aggregate using averaging. (default)
+        (2) Aggregate using summation.
+        (3) Aggregate using last received value.
+        (4) Aggregate using maximum value.
+        (5) Aggregate using minimum value.
+
   enable_ui:
     type: boolean
     description: "Enable dashboard"
