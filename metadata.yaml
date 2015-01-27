@@ -6,12 +6,12 @@ subordinate: false
 provides:
   heka_in:
     interface: heka
-  metrics_in:
+  metrics_statsd:
     interface: udp
-  metrics_in:
+  metrics_carbon:
     interface: tcp
   whisper_out:
-    interface: fs
+    interface: directory
     scope: container
 requires:
   heka_out:
