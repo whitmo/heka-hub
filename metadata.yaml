@@ -10,6 +10,8 @@ provides:
     interface: udp
   metrics_carbon:
     interface: tcp
+  dashboard:
+    interface: http
   whisper_out:
     interface: directory
     scope: container

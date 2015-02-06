@@ -26,6 +26,16 @@ options:
         (4) Aggregate using maximum value.
         (5) Aggregate using minimum value.
 
+  jujud_logs:
+    type: boolean
+    description: |
+      Collect jujud machine zero logs.
+
+  juju_agent:
+    type: boolean
+    description: |
+      Collect juju agent logs.
+
   enable_ui:
     type: boolean
     description: "Enable dashboard"
