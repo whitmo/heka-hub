@@ -1,0 +1,5 @@
+---
+- debug: msg="dashboard relation changed"
+
+- name: render dashboard config
+  template: src=files/dashboard-out.toml dest=/etc/heka.d/_dashboard-out.toml

@@ -1,0 +1,2 @@
+[DashboardOutput]
+ticker_interval = {{ ticker_interval | default(5) }}
