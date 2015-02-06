@@ -22,6 +22,7 @@
         - heka_out-relation-joined
         - elasticsearch_out-relation-joined
         - influxdb_out-relation-joined
+        - any
 
     - include: whisper_out-relation.yml
       tags:
