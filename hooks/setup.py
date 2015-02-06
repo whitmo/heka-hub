@@ -6,6 +6,7 @@ def pre_install():
     Do any setup required before the install hook.
     """
     install_charmhelpers()
+    subprocess.check_call(['pip', 'install', 'path.py'])
 
 
 def install_charmhelpers():
@@ -15,5 +16,7 @@ def install_charmhelpers():
     try:
         import charmhelpers  # noqa
     except ImportError:
+        subprocess.check_call(['apt-get', 'install', '-y', 'git'])
         subprocess.check_call(['apt-get', 'install', '-y', 'python-pip'])
-        subprocess.check_call(['pip', 'install', 'charmhelpers'])
+        pip_url = "git+https://github.com/whitmo/charmhelpers.git#egg=charmhelpers"
+        subprocess.check_call(['pip', 'install', "-e", pip_url])
