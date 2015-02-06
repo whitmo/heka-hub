@@ -2,5 +2,5 @@
 - debug: msg="Influxdb schema relation changed"
 
 - name: render influx schema config
-  template: src=files/schema-out.toml dest=/etc/heka.d/__schema-out.toml
+  template: src=files/schema-out.toml dest=/etc/heka.d/_schema-out.toml
   notify: restart heka
