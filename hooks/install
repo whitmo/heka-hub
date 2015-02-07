@@ -1,9 +1,8 @@
-#!/usr/bin/env python
-import setup
-import sys
+#!/bin/bash
 
-if __name__ == "__main__":
-    setup.pre_install()
-
-    from hooks import hooks
-    hooks.execute(sys.argv)
+set -e
+apt-get install -yq python-pip git python-dev
+pip install -r hooks/requirements.txt
+HOSTS='/etc/ansible/hosts'
+echo "localhost ansible_connection=local" > $HOSTS
+ansible-playbook -c local -vvv playbook/main.yml --tags install
