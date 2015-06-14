@@ -2,7 +2,7 @@
 
 set -e
 apt-get install -yq python-pip git python-dev
-pip install -r hooks/requirements.txt
+pip install --src=/opt/python-src -r hooks/requirements.txt
 HOSTS='/etc/ansible/hosts'
 mkdir  -p /etc/ansible
 echo "localhost ansible_connection=local" > $HOSTS
