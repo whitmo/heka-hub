@@ -2,11 +2,11 @@
 options:
   deb_url:
     type: string
-    default: "https://github.com/mozilla-services/heka/releases/download/v0.8.2/heka_0.8.2_amd64.deb"
+    default: "https://github.com/mozilla-services/heka/releases/download/v0.9.2/heka_0.9.2_amd64.deb"
     description: "Url to a debian package for heka"
   deb_md5:
     type: string
-    default: dbd0b6151a7ce912a97440733b9a98b9
+    default: '8d08023d5fb31d0bb46d7943c5e1aca9'
     description: "MD5 for result of 'deb_url'"
   port:
     type: int
@@ -32,9 +32,18 @@ options:
       Collect jujud machine zero logs.
 
   juju_agent:
-    type: boolean
+    type: string
+    default: 'none'
     description: |
       Collect juju agent logs.
+
+      Defaults to `none` for no logs collected.
+
+      - `all`: collect all agents unit or machine
+      - `machine`: only collect machine log
+      - `self`: only collect log for unit agent for heka-hub
+      - `unit`: only collect logs from unit agents (including heka-hub)
+
 
   enable_ui:
     type: boolean
